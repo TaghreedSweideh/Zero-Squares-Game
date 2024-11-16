@@ -3,6 +3,7 @@
  */
 package com.mycompany.main;
 
+import com.mycompany.main.GamePlaying.BlindAlgorithms;
 import com.mycompany.main.GamePlaying.Player;
 import com.mycompany.main.GameStructure.GameState;
 import com.mycompany.main.GameStructure.Level;
@@ -16,44 +17,48 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Level currentLevel = Level.levels.get(4);
+        Level currentLevel = Level.levels.get(3);
         GameState gameState = new GameState(currentLevel.board, currentLevel.coloredSqures,
                 currentLevel.goalSquares);
-        //Action action=new Action();
-      
+
 //        gameState.printGame(gameState.getBoard());
 //        for(GameState game: (gameState.states(gameState)))
 //        { game.printGame(game.getBoard());}
+//        Player player = new Player(gameState);
+//        player.startGame();
+        BlindAlgorithms algorithm = new BlindAlgorithms();
 
+//        System.out.println("Blind Algorithm DFS");
+//        algorithm.solveDFS(gameState);
+//        
+//        System.out.println("Blind Algorithm BFS");
+//        algorithm.solveBFS(gameState);
+        while (true) {
+            System.out.println("Choose Algorithm:");
+            System.out.println("q: Quit");
+            System.out.println("1- User Play");
+            System.out.println("2- DFS");
+            System.out.println("3- BFS");
+            char choice = (new Scanner(System.in)).next().charAt(0);
+            switch (choice) {
+                case '1':
+                    Player player = new Player(gameState);
+                    player.startGame();
+                    break;
+                case '2':
+                    System.out.println("Solving using DFS ...");
+                    algorithm.solveDFS(gameState);
+                    break;
+                case '3':
+                    System.out.println("Solving using BFS ...");
+                    algorithm.solveBFS(gameState);
+                default:
+                    System.out.println("Invalid choice.Try again.");
+                    break;
+                case 'q':
+                    return;
+            }
+        }
 
-       Player player = new Player(gameState);
-        player.startGame();
-        
-//        System.out.println("Current Game");
-//        gameState.printGame(gameState.getBoard());
-//        System.out.println("game after moving Down");
-//
-//        gameState = action.moveDown(gameState);
-//        gameState.printGame(gameState.getBoard());
-//        if (gameState.checkWin(gameState.getColoredSquares())) {
-//            System.out.println("You Win");
-//        } else {
-//            System.out.println("Still playing");
-//        }
-//        gameState = action.moveLeft(gameState);
-//        gameState.printGame(gameState.getBoard());
-//        gameState = action.moveLeft(gameState);
-//        gameState.printGame(gameState.getBoard());
-//        gameState = action.moveUp(gameState);
-//        gameState.printGame(gameState.getBoard());
-//        gameState = action.moveRight(gameState);
-//        gameState.printGame(gameState.getBoard());
-//        gameState = action.moveRight(gameState);
-//        gameState.printGame(gameState.getBoard());
-//        if (gameState.checkWin(gameState.getColoredSquares())) {
-//            System.out.println("You Win");
-//        } else {
-//            System.out.println("Still playing");
-//        }
     }
 }

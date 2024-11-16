@@ -16,17 +16,37 @@ import java.util.Objects;
  */
 public class GameState {
 
+    GameState parent;
     char[][] board;
     List<Position> coloredSquares;
     List<Position> goalSquares;
 
-    public GameState(char[][] board, List<Position> coloredSquares, List<Position> goalSquared) {
+    public GameState(GameState parent, char[][] board, List<Position> coloredSquares, List<Position> goalSquares) {
+        this.parent = parent;
         this.board = board;
         this.coloredSquares = coloredSquares;
-        this.goalSquares = goalSquared;
+        this.goalSquares = goalSquares;
+    }
+
+    public GameState(char[][] board, List<Position> coloredSquares, List<Position> goalSquares) {
+        this.board = board;
+        this.coloredSquares = coloredSquares;
+        this.goalSquares = goalSquares;
     }
 
     public GameState() {
+    }
+
+    public boolean hasPrevious() {
+        return this.parent != null;
+    }
+
+    public GameState getParent() {
+        return parent;
+    }
+
+    public void setParent(GameState parent) {
+        this.parent = parent;
     }
 
     public char[][] getBoard() {

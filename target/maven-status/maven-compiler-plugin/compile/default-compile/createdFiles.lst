@@ -1,5 +1,5 @@
 com\mycompany\main\GameStructure\Position.class
-com\mycompany\main\GamePlaying\Algorithms.class
+com\mycompany\main\GamePlaying\BlindAlgorithms.class
 com\mycompany\main\GamePlaying\Player.class
 com\mycompany\main\GameStructure\Level.class
 com\mycompany\main\Main.class

@@ -35,7 +35,6 @@ public class Player {
         gameState.printGame(gameState.getBoard());
         System.out.println("************ CONGATULATIONS ************");
         System.out.println("************     YOU WON     ************");
-        scanner.close();
     }
 
     private boolean keyAction(char input) {

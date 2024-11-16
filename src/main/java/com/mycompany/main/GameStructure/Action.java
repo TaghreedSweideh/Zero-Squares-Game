@@ -22,7 +22,7 @@ public class Action {
             int currentCol = pos.getCol();
             if (currentCol > 0
                     && (currentGame.board[currentRow][currentCol - 1] != '#'
-                            && !isColoredSquare(currentRow, currentCol - 1, currentGame.coloredSquares))) {
+                    && !isColoredSquare(currentRow, currentCol - 1, currentGame.coloredSquares))) {
                 return true;
             }
         }
@@ -36,7 +36,7 @@ public class Action {
             int currentCol = pos.getCol();
             if (currentCol < currentGame.board[0].length - 1
                     && (currentGame.board[currentRow][currentCol + 1] != '#'
-                            && !isColoredSquare(currentRow, currentCol + 1, currentGame.coloredSquares))) {
+                    && !isColoredSquare(currentRow, currentCol + 1, currentGame.coloredSquares))) {
                 return true;
             }
         }
@@ -50,7 +50,7 @@ public class Action {
             int currentCol = pos.getCol();
             if (currentRow > 0
                     && (currentGame.board[currentRow - 1][currentCol] != '#'
-                            && !isColoredSquare(currentRow - 1, currentCol, currentGame.coloredSquares))) {
+                    && !isColoredSquare(currentRow - 1, currentCol, currentGame.coloredSquares))) {
                 return true;
             }
         }
@@ -64,7 +64,7 @@ public class Action {
             int currentCol = pos.getCol();
             if (currentRow < currentGame.board.length - 1
                     && (currentGame.board[currentRow + 1][currentCol] != '#'
-                            && !isColoredSquare(currentRow + 1, currentCol, currentGame.coloredSquares))) {
+                    && !isColoredSquare(currentRow + 1, currentCol, currentGame.coloredSquares))) {
                 return true;
             }
         }
@@ -102,7 +102,7 @@ public class Action {
 
             while (newCol < currentGame.board[0].length - 1
                     && (currentGame.board[currentRow][newCol + 1] != '#'
-                            && !isColoredSquare(currentRow, newCol + 1, currentGame.coloredSquares))) {
+                    && !isColoredSquare(currentRow, newCol + 1, currentGame.coloredSquares))) {
                 newCol++;
 
                 if (currentGame.board[currentRow][newCol] == Character.toLowerCase(pos.getColor())) {
@@ -161,7 +161,7 @@ public class Action {
             int newRow = currentRow;
             while (newRow < currentGame.board.length - 1
                     && (currentGame.board[newRow + 1][currentCol] != '#'
-                            && !isColoredSquare(newRow + 1, currentCol, currentGame.coloredSquares))) {
+                    && !isColoredSquare(newRow + 1, currentCol, currentGame.coloredSquares))) {
                 newRow++;
                 if (currentGame.board[newRow][currentCol] == Character.toLowerCase(pos.getColor())) {
                     newGame.board[currentRow][currentCol] = ' ';
@@ -218,7 +218,7 @@ public class Action {
 
             while (newRow > 0
                     && (currentGame.board[newRow - 1][currentCol] != '#'
-                            && !isColoredSquare(newRow - 1, currentCol, currentGame.coloredSquares))) {
+                    && !isColoredSquare(newRow - 1, currentCol, currentGame.coloredSquares))) {
                 newRow--;
 
                 if (newRow < currentGame.board.length) {

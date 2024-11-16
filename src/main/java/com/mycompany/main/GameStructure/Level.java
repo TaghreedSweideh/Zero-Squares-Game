@@ -97,6 +97,30 @@ public class Level {
 
         levels.add(new Level(11, boardLevel11, coloredSquaresLevel11, goalSquaresLevel11));
 
+        
+        //level 20 setup
+        char[][] boardLevel20={
+            {' ',' ',' ','#','#','#','#',' ',' '},
+            {'#','#','#','#','R','y','#','#','#'},
+            {'#','b','P','B',' ',' ',' ',' ','#'},
+            {'#',' ','G','#','r',' ','#','Y','#'},
+            {'#','#','#','#','#','#','#','#','#'},
+        };
+        List<Position>coloredSquaresLevel20=new ArrayList<>();
+        coloredSquaresLevel20.add(new Position(1,4,'R'));
+        coloredSquaresLevel20.add(new Position(2,2,'P'));
+        coloredSquaresLevel20.add(new Position(2,3,'B'));   
+        coloredSquaresLevel20.add(new Position(3,2,'G'));
+        coloredSquaresLevel20.add(new Position(3,7,'Y'));
+        List<Position>goalSquaresLevel20=new ArrayList<>();
+        goalSquaresLevel20.add(new Position(1,5,'y'));
+        goalSquaresLevel20.add(new Position(2,1,'b'));
+        goalSquaresLevel20.add(new Position(3,2,'p'));
+        goalSquaresLevel20.add(new Position(3,4,'r'));
+        goalSquaresLevel20.add(new Position(3,7,'g'));
+        
+        levels.add(new Level(20,boardLevel20,coloredSquaresLevel20,goalSquaresLevel20 ));
+        
     }
 
     public Level getCurrentLevel(int levelNo) {
