@@ -34,7 +34,7 @@ public class BlindAlgorithms {
 
             for (GameState game : current.states(current)) {
                 if (!visited.containsKey(game)) {
-//                   game.printGame(game.getBoard());
+                    // game.printGame(game.getBoard());
                     game.setParent(current);
                     stack.push(game);
                     visited.put(game, true);
@@ -61,7 +61,7 @@ public class BlindAlgorithms {
             }
             for (GameState game : current.states(current)) {
                 if (!visited.containsKey(game)) {
-//                    game.printGame(game.getBoard());
+                    // game.printGame(game.getBoard());
                     game.setParent(current);
                     queue.add(game);
                     visited.put(game, true);
@@ -69,6 +69,30 @@ public class BlindAlgorithms {
             }
         }
         System.out.println("No solution found.");
+    }
+
+    public void DFSRecursive(GameState initState) {
+        Map<GameState, Boolean> visited = new HashMap<>();
+        int visitedCount = 0;
+        if (visitedCount == 0) {
+            DFSRecursive(initState);
+            visited.put(initState, true);
+            visitedCount++;
+        }
+        // stop state
+        if (initState.checkWin(initState.getColoredSquares())) {
+            printPath(initState, visitedCount);
+            return;
+        }
+        for (GameState game : initState.states(initState)) {
+            if (!visited.containsKey(game)) {
+                game.printGame(game.getBoard());
+                game.setParent(initState);
+                visited.put(game, true);
+                visitedCount++;
+                DFSRecursive(initState);
+            }
+        }
     }
 
     void printPath(GameState goal, int visitedCount) {
