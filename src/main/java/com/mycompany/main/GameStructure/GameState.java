@@ -17,12 +17,15 @@ import java.util.Objects;
 public class GameState {
 
     GameState parent;
+    int cost = 1;
     char[][] board;
     List<Position> coloredSquares;
     List<Position> goalSquares;
 
-    public GameState(GameState parent, char[][] board, List<Position> coloredSquares, List<Position> goalSquares) {
+    public GameState(GameState parent, int cost, char[][] board, List<Position> coloredSquares,
+            List<Position> goalSquares) {
         this.parent = parent;
+        this.cost = cost;
         this.board = board;
         this.coloredSquares = coloredSquares;
         this.goalSquares = goalSquares;
@@ -47,6 +50,14 @@ public class GameState {
 
     public void setParent(GameState parent) {
         this.parent = parent;
+    }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
     }
 
     public char[][] getBoard() {

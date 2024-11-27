@@ -5,10 +5,13 @@
 package com.mycompany.main.GamePlaying;
 
 import com.mycompany.main.GameStructure.GameState;
+
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Stack;
 
@@ -71,28 +74,27 @@ public class BlindAlgorithms {
         System.out.println("No solution found.");
     }
 
+    Map<GameState, Boolean> visited = new HashMap<>();
+    int visitedCount = 0;
+
     public void DFSRecursive(GameState initState) {
-        Map<GameState, Boolean> visited = new HashMap<>();
-        int visitedCount = 0;
-        if (visitedCount == 0) {
-            DFSRecursive(initState);
-            visited.put(initState, true);
-            visitedCount++;
+        if (visited.containsKey(initState)) {
+            return;
         }
-        // stop state
+        visited.put(initState, true);
+        visitedCount++;
         if (initState.checkWin(initState.getColoredSquares())) {
             printPath(initState, visitedCount);
             return;
         }
         for (GameState game : initState.states(initState)) {
             if (!visited.containsKey(game)) {
-                game.printGame(game.getBoard());
+                // game.printGame(game.getBoard());
                 game.setParent(initState);
-                visited.put(game, true);
-                visitedCount++;
-                DFSRecursive(initState);
+                DFSRecursive(game);
             }
         }
+
     }
 
     void printPath(GameState goal, int visitedCount) {
