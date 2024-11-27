@@ -61,6 +61,7 @@ public class Main {
                     break;
                 case '5':
                     System.out.println("Solving using Unifrom Cost search ...");
+                    algorithm.solveUCS(gameState);
                     break;
                 default:
                     System.out.println("Invalid choice.Try again.");

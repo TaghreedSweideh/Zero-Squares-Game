@@ -97,6 +97,39 @@ public class BlindAlgorithms {
 
     }
 
+    public void solveUCS(GameState initState) {
+        PriorityQueue<GameState> queue = new PriorityQueue<>(Comparator.comparingInt(GameState::getCost));
+        Map<GameState, Integer> visited = new HashMap<>();
+        int visitedCount = 0;
+        initState.setCost(0);
+        queue.add(initState);
+        while (!queue.isEmpty()) {
+            GameState current = queue.poll();
+
+            if (current.checkWin(current.getColoredSquares())) {
+                printPath(current, visitedCount);
+                System.out.println("Total cost of the algorithm is : " + current.getCost());
+                return;
+            }
+
+            if (visited.containsKey(current) && visited.get(current) < current.getCost()) {
+                continue;
+            }
+            visited.put(current, current.getCost());
+            visitedCount++;
+            for (GameState game : current.states(current)) {
+                int cost = current.getCost() + 1;
+                game.setCost(cost);
+                game.setParent(current);
+                if (!visited.containsKey(game) || cost < visited.get(game)) {
+                    // game.printGame(game.getBoard());
+                    queue.add(game);
+                }
+            }
+        }
+        System.out.println("No solution found.");
+    }
+
     void printPath(GameState goal, int visitedCount) {
         List<GameState> path = new LinkedList();
 
