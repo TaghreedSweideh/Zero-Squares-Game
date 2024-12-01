@@ -17,7 +17,8 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Level currentLevel = Level.levels.get(5);
+        Level currentLevel = Level.levels.get(4);
+
         GameState gameState = new GameState(currentLevel.board, currentLevel.coloredSqures,
                 currentLevel.goalSquares);
 
@@ -32,6 +33,9 @@ public class Main {
         //
         // System.out.println("Blind Algorithm BFS");
         // algorithm.solveBFS(gameState);
+        HeuristicAlgorithms heuristic = new HeuristicAlgorithms();
+        // System.out.println(heuristic.calculateHeuristic(gameState));
+        // heuristic.solveAStar(gameState);
         while (true) {
             System.out.println("Choose Algorithm:");
             System.out.println("q: Quit");
@@ -40,7 +44,8 @@ public class Main {
             System.out.println("3- BFS");
             System.out.println("4- DFS recursion");
             System.out.println("5- Uniform Cost search");
-            System.out.println("6- Hill Climbing");
+            System.out.println("6- A* ");
+            System.out.println("7- Hill Climbing");
             char choice = (new Scanner(System.in)).next().charAt(0);
             switch (choice) {
                 case '1':
@@ -63,6 +68,15 @@ public class Main {
                     System.out.println("Solving using Unifrom Cost search ...");
                     algorithm.solveUCS(gameState);
                     break;
+                case '6':
+                    System.out.println("Solving using A* ...");
+                    heuristic.solveAStar(gameState);
+                    break;
+                case '7':
+                    System.out.println("Solving using Hill Climbing ...");
+                    heuristic.solveHillClimbing(gameState);
+                    break;
+
                 default:
                     System.out.println("Invalid choice.Try again.");
                     break;

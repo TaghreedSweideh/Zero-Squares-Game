@@ -74,6 +74,25 @@ public class Level {
         goalSquaresLevel6.add(new Position(2, 3, 'b'));
 
         levels.add(new Level(6, boardLevel6, coloredSquaresLevel6, goalSquaresLevel6));
+        // level 9 setup
+        char[][] boardLevel9 = {
+                { ' ', '#', '#', '#', '#', '#', ' ', ' ', ' ', ' ', ' ' },
+                { '#', '#', 'R', ' ', ' ', '#', '#', '#', '#', '#', ' ' },
+                { '#', ' ', ' ', ' ', ' ', '#', '#', 'b', ' ', '#', ' ' },
+                { '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#', '#' },
+                { '#', ' ', ' ', ' ', '#', '#', '#', ' ', ' ', 'r', '#' },
+                { '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#', '#' },
+                { '#', '#', 'B', ' ', '#', '#', '#', '#', '#', '#', ' ' },
+                { ' ', '#', '#', '#', '#', ' ', ' ', ' ', ' ', ' ', ' ' },
+        };
+        List<Position> coloredSquaresLevel9 = new ArrayList<>();
+        coloredSquaresLevel9.add(new Position(1, 2, 'R'));
+        coloredSquaresLevel9.add(new Position(6, 2, 'B'));
+        List<Position> goalSquaresLevel9 = new ArrayList<>();
+        goalSquaresLevel9.add(new Position(4, 9, 'r'));
+        goalSquaresLevel9.add(new Position(2, 7, 'b'));
+
+        levels.add(new Level(9, boardLevel9, coloredSquaresLevel9, goalSquaresLevel9));
 
         // level 11 setup
         char[][] boardLevel11 = { { ' ', '#', '#', '#', ' ', ' ', ' ', ' ' },

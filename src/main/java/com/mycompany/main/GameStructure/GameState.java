@@ -15,7 +15,8 @@ import java.util.List;
 public class GameState {
 
     GameState parent;
-    int cost = 1;
+    int gCost = 1;
+    int hCost = Integer.MAX_VALUE;
     char[][] board;
     List<Position> coloredSquares;
     List<Position> goalSquares;
@@ -23,7 +24,7 @@ public class GameState {
     public GameState(GameState parent, int cost, char[][] board, List<Position> coloredSquares,
             List<Position> goalSquares) {
         this.parent = parent;
-        this.cost = cost;
+        this.gCost = cost;
         this.board = board;
         this.coloredSquares = coloredSquares;
         this.goalSquares = goalSquares;
@@ -50,12 +51,20 @@ public class GameState {
         this.parent = parent;
     }
 
-    public int getCost() {
-        return cost;
+    public int gethCost() {
+        return hCost;
     }
 
-    public void setCost(int cost) {
-        this.cost = cost;
+    public void sethCost(int hCost) {
+        this.hCost = hCost;
+    }
+
+    public int getgCost() {
+        return gCost;
+    }
+
+    public void setgCost(int cost) {
+        this.gCost = cost;
     }
 
     public char[][] getBoard() {
