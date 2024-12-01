@@ -22,17 +22,17 @@ public class HeuristicAlgorithms {
                 return;
             }
             GameState bestCase = null;
-            int bestHeuristic = Integer.MAX_VALUE;
+            int min = Integer.MAX_VALUE;
             for (GameState game : current.states(current)) {
                 int heuristic = calculateHeuristic(game);
                 System.out.println("heuristic: " + heuristic);
-                if (heuristic < bestHeuristic) {
-                    bestHeuristic = heuristic;
+                if (heuristic < min) {
+                    min = heuristic;
                     bestCase = game;
                 }
             }
-            System.out.println("best heuristic: " + bestHeuristic);
-            if (bestCase == null || bestHeuristic >= calculateHeuristic(current)) {
+            System.out.println("best heuristic: " + min);
+            if (bestCase == null || min >= calculateHeuristic(current)) {
                 return;
             }
             bestCase.setParent(current);
