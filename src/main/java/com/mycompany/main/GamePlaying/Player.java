@@ -2,9 +2,6 @@ package com.mycompany.main.GamePlaying;
 
 import com.mycompany.main.GameStructure.Action;
 import com.mycompany.main.GameStructure.GameState;
-import java.util.ArrayList;
-import javax.swing.text.Position;
-
 /**
  *
  * @author taghr

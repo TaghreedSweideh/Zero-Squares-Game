@@ -2,12 +2,7 @@ package com.mycompany.main.GameStructure;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
-/**
- *
- * @author taghr
- */
 public class Level {
 
     int levelNo;
@@ -27,50 +22,50 @@ public class Level {
     }
 
     static {
-        //Level 1 setup
+        // Level 1 setup
         char[][] boardLevel1 = {
-            {'#', '#', '#', '#', '#', '#', '#', '#'},
-            {'#', 'R', ' ', ' ', ' ', ' ', 'r', '#'},
-            {'#', '#', '#', '#', '#', '#', '#', '#'}
+                { '#', '#', '#', '#', '#', '#', '#', '#' },
+                { '#', 'R', ' ', ' ', ' ', ' ', 'r', '#' },
+                { '#', '#', '#', '#', '#', '#', '#', '#' }
         };
         List<Position> coloredSquaresLevel1 = new ArrayList<>();
         coloredSquaresLevel1.add(new Position(1, 1, 'R'));
         List<Position> goalSquaresLevel1 = new ArrayList<>();
         goalSquaresLevel1.add(new Position(1, 6, 'r'));
         levels.add(new Level(1, boardLevel1, coloredSquaresLevel1, goalSquaresLevel1));
-        //level 2 setup
-        char[][] boardLevel2 = {{'#', '#', '#', '#', '#', '#', '#', '#'},
-        {'#', ' ', ' ', '#', ' ', ' ', ' ', '#'},
-        {'#', 'O', ' ', ' ', ' ', ' ', ' ', '#'},
-        {'#', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
-        {'#', '#', '#', '#', 'o', '#', '#', '#'},
-        {' ', ' ', ' ', '#', '#', '#', ' ', ' '}};
+        // level 2 setup
+        char[][] boardLevel2 = { { '#', '#', '#', '#', '#', '#', '#', '#' },
+                { '#', ' ', ' ', '#', ' ', ' ', ' ', '#' },
+                { '#', 'O', ' ', ' ', ' ', ' ', ' ', '#' },
+                { '#', ' ', ' ', ' ', ' ', ' ', ' ', '#' },
+                { '#', '#', '#', '#', 'o', '#', '#', '#' },
+                { ' ', ' ', ' ', '#', '#', '#', ' ', ' ' } };
         List<Position> coloredSquaresLevel2 = new ArrayList<>();
         coloredSquaresLevel2.add(new Position(2, 1, 'O'));
         List<Position> goalSquaresLevel2 = new ArrayList<>();
         goalSquaresLevel2.add(new Position(4, 4, 'o'));
         levels.add(new Level(2, boardLevel2, coloredSquaresLevel2, goalSquaresLevel2));
-        //level 3 setup
-        char[][] boardLevel3 = {{' ', ' ', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'},
-        {' ', ' ', '#', 'O', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
-        {'#', '#', '#', ' ', ' ', '#', '#', '#', '#', '#', '#', ' ', '#'},
-        {'#', ' ', ' ', ' ', ' ', ' ', 'o', ' ', ' ', ' ', '#', ' ', '#'},
-        {'#', ' ', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#', ' ', '#'},
-        {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
-        {'#', '#', '#', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
-        {' ', ' ', ' ', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'}};
+        // level 3 setup
+        char[][] boardLevel3 = { { ' ', ' ', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#' },
+                { ' ', ' ', '#', 'O', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#' },
+                { '#', '#', '#', ' ', ' ', '#', '#', '#', '#', '#', '#', ' ', '#' },
+                { '#', ' ', ' ', ' ', ' ', ' ', 'o', ' ', ' ', ' ', '#', ' ', '#' },
+                { '#', ' ', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#', ' ', '#' },
+                { '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#' },
+                { '#', '#', '#', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#' },
+                { ' ', ' ', ' ', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#' } };
 
         List<Position> coloredSquaresLevel3 = new ArrayList<>();
         coloredSquaresLevel3.add(new Position(1, 3, 'O'));
         List<Position> goalSquaresLevel3 = new ArrayList<>();
         goalSquaresLevel3.add(new Position(3, 6, 'o'));
         levels.add(new Level(3, boardLevel3, coloredSquaresLevel3, goalSquaresLevel3));
-        //level 6 setup
-        char[][] boardLevel6 = {{'#', '#', '#', '#', '#', '#', ' ', ' ', ' '},
-        {'#', 'o', ' ', ' ', ' ', '#', '#', ' ', ' '},
-        {'#', ' ', ' ', 'b', ' ', ' ', '#', '#', '#'},
-        {'#', ' ', ' ', ' ', ' ', ' ', 'B', 'O', '#'},
-        {'#', '#', '#', '#', '#', '#', '#', '#', '#'}};
+        // level 6 setup
+        char[][] boardLevel6 = { { '#', '#', '#', '#', '#', '#', ' ', ' ', ' ' },
+                { '#', 'o', ' ', ' ', ' ', '#', '#', ' ', ' ' },
+                { '#', ' ', ' ', 'b', ' ', ' ', '#', '#', '#' },
+                { '#', ' ', ' ', ' ', ' ', ' ', 'B', 'O', '#' },
+                { '#', '#', '#', '#', '#', '#', '#', '#', '#' } };
         List<Position> coloredSquaresLevel6 = new ArrayList<>();
         coloredSquaresLevel6.add(new Position(3, 6, 'B'));
         coloredSquaresLevel6.add(new Position(3, 7, 'O'));
@@ -80,12 +75,12 @@ public class Level {
 
         levels.add(new Level(6, boardLevel6, coloredSquaresLevel6, goalSquaresLevel6));
 
-        //level 11 setup
-        char[][] boardLevel11 = {{' ', '#', '#', '#', ' ', ' ', ' ', ' '},
-        {'#', '#', 'y', '#', '#', '#', '#', '#'},
-        {'#', 'Y', 'R', 'B', ' ', ' ', ' ', '#'},
-        {'#', 'b', '#', 'r', '#', '#', '#', '#'},
-        {'#', '#', '#', '#', '#', '#', '#', '#'}};
+        // level 11 setup
+        char[][] boardLevel11 = { { ' ', '#', '#', '#', ' ', ' ', ' ', ' ' },
+                { '#', '#', 'y', '#', '#', '#', '#', '#' },
+                { '#', 'Y', 'R', 'B', ' ', ' ', ' ', '#' },
+                { '#', 'b', '#', 'r', '#', '#', '#', '#' },
+                { '#', '#', '#', '#', '#', '#', '#', '#' } };
         List<Position> coloredSquaresLevel11 = new ArrayList<>();
         coloredSquaresLevel11.add(new Position(2, 1, 'Y'));
         coloredSquaresLevel11.add(new Position(2, 2, 'R'));
@@ -97,30 +92,29 @@ public class Level {
 
         levels.add(new Level(11, boardLevel11, coloredSquaresLevel11, goalSquaresLevel11));
 
-        
-        //level 20 setup
-        char[][] boardLevel20={
-            {' ',' ',' ','#','#','#','#',' ',' '},
-            {'#','#','#','#','R','y','#','#','#'},
-            {'#','b','P','B',' ',' ',' ',' ','#'},
-            {'#',' ','G','#','r',' ','#','Y','#'},
-            {'#','#','#','#','#','#','#','#','#'},
+        // level 20 setup
+        char[][] boardLevel20 = {
+                { ' ', ' ', ' ', '#', '#', '#', '#', ' ', ' ' },
+                { '#', '#', '#', '#', 'R', 'y', '#', '#', '#' },
+                { '#', 'b', 'P', 'B', ' ', ' ', ' ', ' ', '#' },
+                { '#', ' ', 'G', '#', 'r', ' ', '#', 'Y', '#' },
+                { '#', '#', '#', '#', '#', '#', '#', '#', '#' },
         };
-        List<Position>coloredSquaresLevel20=new ArrayList<>();
-        coloredSquaresLevel20.add(new Position(1,4,'R'));
-        coloredSquaresLevel20.add(new Position(2,2,'P'));
-        coloredSquaresLevel20.add(new Position(2,3,'B'));   
-        coloredSquaresLevel20.add(new Position(3,2,'G'));
-        coloredSquaresLevel20.add(new Position(3,7,'Y'));
-        List<Position>goalSquaresLevel20=new ArrayList<>();
-        goalSquaresLevel20.add(new Position(1,5,'y'));
-        goalSquaresLevel20.add(new Position(2,1,'b'));
-        goalSquaresLevel20.add(new Position(3,2,'p'));
-        goalSquaresLevel20.add(new Position(3,4,'r'));
-        goalSquaresLevel20.add(new Position(3,7,'g'));
-        
-        levels.add(new Level(20,boardLevel20,coloredSquaresLevel20,goalSquaresLevel20 ));
-        
+        List<Position> coloredSquaresLevel20 = new ArrayList<>();
+        coloredSquaresLevel20.add(new Position(1, 4, 'R'));
+        coloredSquaresLevel20.add(new Position(2, 2, 'P'));
+        coloredSquaresLevel20.add(new Position(2, 3, 'B'));
+        coloredSquaresLevel20.add(new Position(3, 2, 'G'));
+        coloredSquaresLevel20.add(new Position(3, 7, 'Y'));
+        List<Position> goalSquaresLevel20 = new ArrayList<>();
+        goalSquaresLevel20.add(new Position(1, 5, 'y'));
+        goalSquaresLevel20.add(new Position(2, 1, 'b'));
+        goalSquaresLevel20.add(new Position(3, 2, 'p'));
+        goalSquaresLevel20.add(new Position(3, 4, 'r'));
+        goalSquaresLevel20.add(new Position(3, 7, 'g'));
+
+        levels.add(new Level(20, boardLevel20, coloredSquaresLevel20, goalSquaresLevel20));
+
     }
 
     public Level getCurrentLevel(int levelNo) {
@@ -130,68 +124,6 @@ public class Level {
             }
         }
         return null;
-    }
-
-}
-
-class Position {
-
-    private int row;
-    private int col;
-    private char color;
-
-    Position() {
-    }
-
-    Position(int row) {
-        this.row = row;
-    }
-
-    Position(int row, int col, char color) {
-        this.row = row;
-        this.col = col;
-        this.color = color;
-    }
-
-    public int getRow() {
-        return row;
-    }
-
-    public int getCol() {
-        return col;
-    }
-
-    public void setRow(int row) {
-        this.row = row;
-    }
-
-    public void setCol(int col) {
-        this.col = col;
-    }
-
-    public char getColor() {
-        return color;
-    }
-
-    public void setColor(char color) {
-        this.color = color;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Position position = (Position) o;
-        return row == position.row && col == position.col && color == position.color;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(row, col, color);
     }
 
 }

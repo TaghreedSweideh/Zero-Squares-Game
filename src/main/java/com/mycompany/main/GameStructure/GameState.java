@@ -4,11 +4,9 @@
  */
 package com.mycompany.main.GameStructure;
 
-import com.mycompany.main.GameStructure.Position;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 /**
  *

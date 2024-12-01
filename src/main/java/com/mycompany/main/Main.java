@@ -4,10 +4,10 @@
 package com.mycompany.main;
 
 import com.mycompany.main.GamePlaying.BlindAlgorithms;
+import com.mycompany.main.GamePlaying.HeuristicAlgorithms;
 import com.mycompany.main.GamePlaying.Player;
 import com.mycompany.main.GameStructure.GameState;
 import com.mycompany.main.GameStructure.Level;
-import com.mycompany.main.GameStructure.Action;
 import java.util.Scanner;
 
 /**
@@ -27,7 +27,6 @@ public class Main {
         // Player player = new Player(gameState);
         // player.startGame();
         BlindAlgorithms algorithm = new BlindAlgorithms();
-
         // System.out.println("Blind Algorithm DFS");
         // algorithm.solveDFS(gameState);
         //
@@ -41,6 +40,7 @@ public class Main {
             System.out.println("3- BFS");
             System.out.println("4- DFS recursion");
             System.out.println("5- Uniform Cost search");
+            System.out.println("6- Hill Climbing");
             char choice = (new Scanner(System.in)).next().charAt(0);
             switch (choice) {
                 case '1':
