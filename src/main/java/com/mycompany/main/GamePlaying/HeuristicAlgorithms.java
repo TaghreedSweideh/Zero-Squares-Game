@@ -1,24 +1,69 @@
 package com.mycompany.main.GamePlaying;
 
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
-
 import com.mycompany.main.GameStructure.GameState;
 import com.mycompany.main.GameStructure.Position;
 
 public class HeuristicAlgorithms {
 
-    public void solveHillClimbing(GameState initState) {
+    public void simpleHillClimbing(GameState initState) {
+        long startTime = System.nanoTime();
+        Runtime runtime = Runtime.getRuntime();
+        runtime.gc();
+        long memoryBefore = runtime.totalMemory() - runtime.freeMemory();
+
+        GameState current = initState;
+        while (true) {
+            if (current.checkWin(current.getColoredSquares())) {
+                printPath(current, 0);
+                long endTime = System.nanoTime();
+                long memoryAfter = runtime.totalMemory() - runtime.freeMemory();
+
+                System.out.println("Execution Time: " + (endTime - startTime) / 1_000_000 + " ms");
+                System.out.println("Memory Used: " + (memoryAfter - memoryBefore) / 1024 + " KB");
+
+                return;
+            }
+            boolean flag = false;
+            for (GameState game : current.states(current)) {
+                int parentHeu = calculateHeuristic(current);
+                int childHeu = calculateHeuristic(game);
+                if (childHeu < parentHeu) {
+                    current = game;
+                    game.setParent(current);
+                    flag = true;
+                    break;
+                }
+                if (!flag) {
+                    System.out.println("No better solution found");
+                    return;
+                }
+            }
+        }
+    }
+
+    public void steepestHillClimbing(GameState initState) {
+
+        long startTime = System.nanoTime();
+        Runtime runtime = Runtime.getRuntime();
+        runtime.gc();
+        long memoryBefore = runtime.totalMemory() - runtime.freeMemory();
+
         GameState current = initState;
 
         while (true) {
 
             if (current.checkWin(current.getColoredSquares())) {
                 printPath(current, 0);
+                long endTime = System.nanoTime();
+                long memoryAfter = runtime.totalMemory() - runtime.freeMemory();
+
+                System.out.println("Execution Time: " + (endTime - startTime) / 1_000_000 + " ms");
+                System.out.println("Memory Used: " + (memoryAfter - memoryBefore) / 1024 + " KB");
                 return;
             }
             GameState bestCase = null;
@@ -42,6 +87,12 @@ public class HeuristicAlgorithms {
     }
 
     public void solveAStar(GameState initState) {
+
+        long startTime = System.nanoTime();
+        Runtime runtime = Runtime.getRuntime();
+        runtime.gc();
+        long memoryBefore = runtime.totalMemory() - runtime.freeMemory();
+
         PriorityQueue<GameState> queue = new PriorityQueue<>(
                 (a, b) -> ((a.getgCost() + a.gethCost()) - (b.getgCost() + b.gethCost())));
         Map<GameState, Integer> visited = new HashMap<>();
@@ -55,6 +106,11 @@ public class HeuristicAlgorithms {
             if (current.checkWin(current.getColoredSquares())) {
                 printPath(current, visitedCount);
                 System.out.println("Total cost of the algorithm is : " + current.getgCost());
+                long endTime = System.nanoTime();
+                long memoryAfter = runtime.totalMemory() - runtime.freeMemory();
+
+                System.out.println("Execution Time: " + (endTime - startTime) / 1_000_000 + " ms");
+                System.out.println("Memory Used: " + (memoryAfter - memoryBefore) / 1024 + " KB");
                 return;
             }
 
@@ -64,7 +120,7 @@ public class HeuristicAlgorithms {
             visited.put(current, current.getgCost());
             visitedCount++;
             for (GameState game : current.states(current)) {
-                int newGCost = current.getgCost() + 1;
+                int newGCost = current.getgCost() + current.calculateCost(current, game);
                 game.sethCost(calculateHeuristic(game));
                 if (!visited.containsKey(game) || newGCost < visited.get(game)) {
                     game.setgCost(newGCost);

@@ -22,6 +22,11 @@ import java.util.Stack;
 public class BlindAlgorithms {
 
     public void solveDFS(GameState initialGame) {
+        long startTime = System.nanoTime();
+        Runtime runtime = Runtime.getRuntime();
+        runtime.gc();
+        long memoryBefore = runtime.totalMemory() - runtime.freeMemory();
+
         Stack<GameState> stack = new Stack();
         Map<GameState, Boolean> visited = new HashMap<>();
         stack.push(initialGame);
@@ -32,6 +37,11 @@ public class BlindAlgorithms {
             visitedCount++;
             if (current.checkWin(current.getColoredSquares())) {
                 printPath(current, visitedCount);
+                long endTime = System.nanoTime();
+                long memoryAfter = runtime.totalMemory() - runtime.freeMemory();
+
+                System.out.println("Execution Time: " + (endTime - startTime) / 1_000_000 + " ms");
+                System.out.println("Memory Used: " + (memoryAfter - memoryBefore) / 1024 + " KB");
                 return;
             }
 
@@ -50,6 +60,11 @@ public class BlindAlgorithms {
     }
 
     public void solveBFS(GameState initiState) {
+        long startTime = System.nanoTime();
+        Runtime runtime = Runtime.getRuntime();
+        runtime.gc();
+        long memoryBefore = runtime.totalMemory() - runtime.freeMemory();
+
         Queue<GameState> queue = new LinkedList<>();
         Map<GameState, Boolean> visited = new HashMap<>();
         int visitedCount = 0;
@@ -60,6 +75,12 @@ public class BlindAlgorithms {
             visitedCount++;
             if (current.checkWin(current.getColoredSquares())) {
                 printPath(current, visitedCount);
+
+                long endTime = System.nanoTime();
+                long memoryAfter = runtime.totalMemory() - runtime.freeMemory();
+
+                System.out.println("Execution Time: " + (endTime - startTime) / 1_000_000 + " ms");
+                System.out.println("Memory Used: " + (memoryAfter - memoryBefore) / 1024 + " KB");
                 return;
             }
             for (GameState game : current.states(current)) {
@@ -98,6 +119,11 @@ public class BlindAlgorithms {
     }
 
     public void solveUCS(GameState initState) {
+        long startTime = System.nanoTime();
+        Runtime runtime = Runtime.getRuntime();
+        runtime.gc();
+        long memoryBefore = runtime.totalMemory() - runtime.freeMemory();
+
         PriorityQueue<GameState> queue = new PriorityQueue<>(Comparator.comparingInt(GameState::getgCost));
         Map<GameState, Integer> visited = new HashMap<>();
         int visitedCount = 0;
@@ -109,6 +135,11 @@ public class BlindAlgorithms {
             if (current.checkWin(current.getColoredSquares())) {
                 printPath(current, visitedCount);
                 System.out.println("Total cost of the algorithm is : " + current.getgCost());
+                long endTime = System.nanoTime();
+                long memoryAfter = runtime.totalMemory() - runtime.freeMemory();
+
+                System.out.println("Execution Time: " + (endTime - startTime) / 1_000_000 + " ms");
+                System.out.println("Memory Used: " + (memoryAfter - memoryBefore) / 1024 + " KB");
                 return;
             }
 
@@ -118,10 +149,11 @@ public class BlindAlgorithms {
             visited.put(current, current.getgCost());
             visitedCount++;
             for (GameState game : current.states(current)) {
-                int cost = current.getgCost() + 1;
-                game.setgCost(cost);
+                int moveCost = current.calculateCost(current, game);
+                int newGCost = current.getgCost() + moveCost;
+                game.setgCost(newGCost);
                 game.setParent(current);
-                if (!visited.containsKey(game) || cost < visited.get(game)) {
+                if (!visited.containsKey(game) || newGCost < visited.get(game)) {
                     // game.printGame(game.getBoard());
                     queue.add(game);
                 }

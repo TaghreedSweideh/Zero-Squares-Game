@@ -91,6 +91,19 @@ public class GameState {
         this.goalSquares = goalSquared;
     }
 
+    public int calculateCost(GameState current, GameState next) {
+        int gCost = 0;
+        List<Position> currentColoredSquares = current.getColoredSquares();
+        List<Position> nextColoredSquares = next.getColoredSquares();
+        for (int i = 0; i < nextColoredSquares.size(); i++) {
+            Position currentGoal = currentColoredSquares.get(i);
+            Position nextGoal = nextColoredSquares.get(i);
+            gCost += Math.abs(currentGoal.getRow() - nextGoal.getRow())
+                    + Math.abs(currentGoal.getCol() - nextGoal.getCol());
+        }
+        return gCost;
+    }
+
     public void printGame(char[][] board) {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {

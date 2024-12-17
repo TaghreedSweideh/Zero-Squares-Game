@@ -45,7 +45,8 @@ public class Main {
             System.out.println("4- DFS recursion");
             System.out.println("5- Uniform Cost search");
             System.out.println("6- A* ");
-            System.out.println("7- Hill Climbing");
+            System.out.println("7- Simple Hill Climbing");
+            System.out.println("8- Steepest Hill Climbing");
             char choice = (new Scanner(System.in)).next().charAt(0);
             switch (choice) {
                 case '1':
@@ -73,10 +74,13 @@ public class Main {
                     heuristic.solveAStar(gameState);
                     break;
                 case '7':
-                    System.out.println("Solving using Hill Climbing ...");
-                    heuristic.solveHillClimbing(gameState);
+                    System.out.println("Solving using Simple Hill Climbing ...");
+                    heuristic.simpleHillClimbing(gameState);
                     break;
-
+                case '8':
+                    System.out.println("Solving using Steepest Hill Climbing ...");
+                    heuristic.steepestHillClimbing(gameState);
+                    break;
                 default:
                     System.out.println("Invalid choice.Try again.");
                     break;

@@ -102,7 +102,10 @@ public class Action {
                     && (currentGame.board[currentRow][newCol + 1] != '#'
                             && !isColoredSquare(currentRow, newCol + 1, currentGame.coloredSquares))) {
                 newCol++;
-
+                // if (currentGame.board[currentRow][newCol] == 'X') {
+                // System.out.println("the game is over");
+                // break;
+                // }
                 if (currentGame.board[currentRow][newCol] == Character.toLowerCase(pos.getColor())) {
                     newGame.board[currentRow][currentCol] = ' ';
                     newGame.board[currentRow][newCol] = ' ';
